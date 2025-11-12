@@ -267,8 +267,8 @@ def main():
     args = parser.parse_args()
     try:
         args.func(args)
-    except (KeyboardInterrupt, AttributeError):
-        print("Bye.")
+    except Exception as e:
+        print(f"Bye. {e}")
         sys.exit(1)
 
 

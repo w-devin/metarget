@@ -26,8 +26,8 @@ class Installer(object):
     cmd_apt_add_key = 'apt-key add -'.split()
     try:
         docker_client = docker.from_env()
-    except BaseException:
-        pass
+    except Exception as e:
+        color_print.warning("failed to get docker client: {}".format(e))
 
     @classmethod
     def _get_apt_complete_version(cls, name, version, verbose=False):
