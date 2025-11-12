@@ -1,4 +1,4 @@
-import platform
+import distro
 
 
 # default CNI plugin
@@ -75,13 +75,13 @@ _docker_apt_repo_gpg_official = 'https://download.docker.com/linux/ubuntu/gpg'
 #sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
 _docker_apt_repo_gpg_aliyun = 'https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg'
 try:
-    release = platform.dist()[2]
+    release = distro.codename()
 except AttributeError:
     release = 'trusty'
 _docker_apt_repo_entry_official = 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {release} stable'.format(
     release=release)
 try:
-    release = platform.dist()[2]
+    release = distro.codename()
 except AttributeError:
     release = 'trusty'
 _docker_apt_repo_entry_aliyun = 'deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu {release} stable'.format(
